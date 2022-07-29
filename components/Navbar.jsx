@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image'
 import logo from '../public/assets/logo.png'
 import { Menu, Transition } from '@headlessui/react';
-import {BsThreeDotsVertical} from 'react-icons/bs';
-import {Fragment} from 'react';
+import { BsThreeDotsVertical, BsSearch ,BsPerson} from 'react-icons/bs';
+import { Fragment } from 'react';
 
 
 function classNames(...classes) {
@@ -99,7 +99,31 @@ export function Navbar() {
                 </div>
             </div>
             {/* Middle  */}
+            <div className='hidden md:flex grow-[2] items-center justify-center'>
+                <div className='bg-gray-500 text-white flex justify-between items-center max-w-[400px] w-full m-auto p-2 rounded-xl '>
+                    <div>
+                        <input
+                            type="text"
+                            className='bg-transparent border-none
+                          text-white focus:outline-none'
+                            placeholder='Search' />
+                    </div>
+                    <div>
+                        <BsSearch />
+                    </div>
+                </div>
+            </div>
             {/* Right side */}
+            <div className='hidden md:flex grow items-center justify-end'>
+                <div className='flex items-center'>
+                    <Link href='/'>
+                    <button className='px-4 py-[6px] rounded-lg font-bold bg-[#9147ff] mr-2'>
+                        Account
+                    </button>
+                    </Link>
+                    <BsPerson size={30}/>
+                </div>
+            </div>
         </div>
     )
 }
