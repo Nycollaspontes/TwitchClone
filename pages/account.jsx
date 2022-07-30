@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { FaGithub ,FaGoogle} from 'react-icons/fa'
+import { FaGithub, FaGoogle } from 'react-icons/fa'
 import Image from 'next/image'
 
 const Account = () => {
@@ -20,7 +20,6 @@ const Account = () => {
                 <button className='flex items-center justify-center p-3 bg-gray-600 border border-gray-600' onClick={() => signOut()}>Sign out</button>
             </div>
         )
-
     }
     return (
         <div className='pt-[100px] flex flex-col max-w-[400px] w-full mx-auto p-4'>
