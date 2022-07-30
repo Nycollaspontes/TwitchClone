@@ -5,6 +5,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { BsThreeDotsVertical, BsSearch, BsPerson } from 'react-icons/bs';
 import { Fragment, useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useSession, singIn, signOut } from 'next-auth/react'
 
 
 function classNames(...classes) {
@@ -12,6 +13,8 @@ function classNames(...classes) {
 }
 
 export function Navbar() {
+    const { data: session } = useSession();
+
     const handleNav = () => {
         setNav(!nav);
     }
@@ -120,14 +123,24 @@ export function Navbar() {
             </div>
             {/* Right side */}
             <div className='hidden md:flex grow items-center justify-end'>
-                <div className='flex items-center'>
-                    <Link href='/'>
-                        <button className='px-4 py-[6px] rounded-lg font-bold bg-[#9147ff] mr-2'>
-                            Account
-                        </button>
-                    </Link>
-                    <BsPerson size={30} />
-                </div>
+                {session ? (
+                    <div>
+                        <Link href='/account'>
+                            <p>
+                                Welcome , {session.user.name}
+                            </p>
+                        </Link>
+                    </div>
+                ) : (
+                    <div className='flex items-center'>
+                        <Link href='/account'>
+                            <button className='px-4 py-[6px] rounded-lg font-bold bg-[#9147ff] mr-2'>
+                                Account
+                            </button>
+                        </Link>
+                        <BsPerson size={30} />
+                    </div>
+                )}
             </div>
             {/* Hamburguer Menu */}
             <div onClick={handleNav} className='block md:hidden z-10 cursor-pointer'>
@@ -139,8 +152,7 @@ export function Navbar() {
                     nav
                         ? 'md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e0e10] flex justify-center items-center ease-in duration-300'
                         : 'md:hidden fixed top-[-100%] left-0 w-full h-screen bg-[#0e0e10] flex justify-center items-center ease-in duration-300'
-                }
-            >
+                }>
                 <ul className='text-center'>
                     <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
                         <Link href='/'>Home</Link>
@@ -152,7 +164,7 @@ export function Navbar() {
                         <Link href='/#categories'>Top Categories</Link>
                     </li>
                     <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
-                        <Link href='/account'>account</Link>
+                        <Link href='/account'>Account</Link>
                     </li>
                 </ul>
             </div>
