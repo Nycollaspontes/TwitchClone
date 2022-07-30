@@ -2,17 +2,22 @@ import Link from 'next/link';
 import Image from 'next/image'
 import logo from '../public/assets/logo.png'
 import { Menu, Transition } from '@headlessui/react';
-import { BsThreeDotsVertical, BsSearch ,BsPerson} from 'react-icons/bs';
-import { Fragment } from 'react';
+import { BsThreeDotsVertical, BsSearch, BsPerson } from 'react-icons/bs';
+import { Fragment, useState } from 'react';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 
 function classNames(...classes) {
     return classes.filter(Boolean).join('');
 }
 
-
-
 export function Navbar() {
+    const handleNav = () => {
+        setNav(!nav);
+    }
+    const [nav, setNav] = useState(false);
+
+
     return (
         <div className="fixed h-14 w-full flex flex-nowrap items-center p-4 bg-[#0e0e10] mb-[2px] z-index-10">
             {/* Left side */}
@@ -117,12 +122,39 @@ export function Navbar() {
             <div className='hidden md:flex grow items-center justify-end'>
                 <div className='flex items-center'>
                     <Link href='/'>
-                    <button className='px-4 py-[6px] rounded-lg font-bold bg-[#9147ff] mr-2'>
-                        Account
-                    </button>
+                        <button className='px-4 py-[6px] rounded-lg font-bold bg-[#9147ff] mr-2'>
+                            Account
+                        </button>
                     </Link>
-                    <BsPerson size={30}/>
+                    <BsPerson size={30} />
                 </div>
+            </div>
+            {/* Hamburguer Menu */}
+            <div onClick={handleNav} className='block md:hidden z-10 cursor-pointer'>
+                {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
+            </div>
+            {/* Mobile Menu */}
+            <div
+                className={
+                    nav
+                        ? 'md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e0e10] flex justify-center items-center ease-in duration-300'
+                        : 'md:hidden fixed top-[-100%] left-0 w-full h-screen bg-[#0e0e10] flex justify-center items-center ease-in duration-300'
+                }
+            >
+                <ul className='text-center'>
+                    <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+                        <Link href='/'>Home</Link>
+                    </li>
+                    <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+                        <Link href='/#live'>Live Channels</Link>
+                    </li>
+                    <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+                        <Link href='/#categories'>Top Categories</Link>
+                    </li>
+                    <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
+                        <Link href='/account'>account</Link>
+                    </li>
+                </ul>
             </div>
         </div>
     )
