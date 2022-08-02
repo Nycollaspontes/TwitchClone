@@ -37,7 +37,7 @@ export function Navbar() {
                 </Link>
                 <p className='p-4'>Browse</p>
                 <div className='p-4'>
-                    <Menu as='div' className='relative text-left'>
+                    <Menu as='div' className='relative text-left '>
                         <div className='flex'>
                             <Menu.Button>
                                 <BsThreeDotsVertical size={20} />

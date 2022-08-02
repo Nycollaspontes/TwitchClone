@@ -1,21 +1,28 @@
+import Image from 'next/image';
+import React from 'react';
 
-
-export function LiveChannelItem() {
-    return (
-        <div id="live" className="p-2 md:p-8">
-            <h2>
-                <span className="text-[#9147ff]">Live Channels</span>
-                we think you like!
-            </h2>
-            {/* Container */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-4 py-2">
-                <LiveChannelItem
-
-                    profile_img='https://static-cdn.jtwm'
-                    title='CHARITY STREAM! Any support is ap...'
-                    user='Natt'
-                    game='Valorant' />
-            </div>
+const LiveChannelItem = ({ img, profile_img, title, user, game }) => {
+  return (
+    <div className='p-2 w-full '>
+      <Image src={img} alt='/' width='555' height='315' />
+      <div className='flex pt-2'>
+        <div className='pr-2'>
+          <Image
+            src={profile_img}
+            alt='/'
+            width='60'
+            height='60'
+            className='rounded-full'
+          />
         </div>
-    )
-}
+        <div>
+          <p className='text-sm font-bold'>{title}</p>
+          <p className='text-sm text-gray-500'>{user}</p>
+          <p className='text-sm text-gray-500'>{game}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LiveChannelItem;
