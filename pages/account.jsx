@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 const Account = () => {
     const { data: session } = useSession();
+
     if (session) {
         return (
             <div className='pt-[100px] flex flex-col max-w-[400px] w-full mx-auto p-4'>
