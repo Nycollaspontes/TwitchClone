@@ -1,6 +1,7 @@
 import { LiveChannels } from "./LiveChannels";
 import {Hero} from './Hero';
 import { IconBar } from "./IconBar";
+import { Categories } from "./Categories";
 
 export function Main() {
     return (
@@ -8,6 +9,7 @@ export function Main() {
             <Hero />
             <LiveChannels />
             <IconBar />
+            <Categories />
         </div>
     )
 }

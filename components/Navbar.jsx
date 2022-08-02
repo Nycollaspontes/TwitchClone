@@ -22,7 +22,7 @@ export function Navbar() {
 
 
     return (
-        <div className="fixed h-14 w-full flex flex-nowrap items-center p-4 bg-[#0e0e10] mb-[2px] z-index-10">
+        <div className="fixed h-14 w-full flex flex-nowrap items-center p-4 bg-[#0e0e10] mb-[2px] z-10">
             {/* Left side */}
             <div className="flex grow items-center justify-start ">
                 <Link href='/'>
@@ -212,10 +212,10 @@ export function Navbar() {
                         <Link href='/'>Home</Link>
                     </li>
                     <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
-                        <Link href='/'>Live Channels</Link>
+                        <Link href='/#live'>Live Channels</Link>
                     </li>
                     <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
-                        <Link href='/'>Top Categories</Link>
+                        <Link href='/#categories'>Categories</Link>
                     </li>
                     <li onClick={() => setNav(false)} className='p-4 text-3xl font-bold'>
                         <Link href='/account'>Account</Link>
